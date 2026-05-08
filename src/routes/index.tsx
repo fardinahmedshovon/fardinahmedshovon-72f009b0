@@ -214,8 +214,13 @@ function Portfolio() {
               </div>
             </section>
 
-            <footer className="max-w-md pb-16 text-[10px] uppercase tracking-widest text-slate-500 sm:pb-0">
-              <p>Designed for Fardin Ahmed Shovon. Built with Tailwind CSS.</p>
+            <footer className="max-w-md pb-16 text-xs text-slate-500 sm:pb-0">
+              <p>
+                © {new Date().getFullYear()} Fardin Ahmed Shovon. All rights reserved.
+              </p>
+              <p className="mt-1 text-[11px] text-slate-600">
+                Crafted with intention. Built to last.
+              </p>
             </footer>
           </main>
         </div>
