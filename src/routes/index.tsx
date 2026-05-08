@@ -146,69 +146,6 @@ function Portfolio() {
               </div>
             </section>
 
-            <section id="experience" className="mb-16 scroll-mt-24 md:mb-24 lg:mb-36">
-              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-[#0f172a]/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200">
-                  Experience
-                </h2>
-              </div>
-
-              <div className="space-y-12">
-                {[
-                  {
-                    period: "2023 — PRESENT",
-                    role: "Founder & CEO",
-                    org: "Current Venture",
-                    desc: "Leading product, growth, and operations end-to-end. Built the founding team, shipped the first product, and grew an early customer base from zero.",
-                    tags: ["Leadership", "Strategy", "Product"],
-                  },
-                  {
-                    period: "2021 — 2023",
-                    role: "Co-Founder",
-                    org: "Previous Venture",
-                    desc: "Co-built a digital services business serving regional clients. Owned sales, hiring, and delivery while scaling the team across two cities.",
-                    tags: ["Sales", "Operations", "Hiring"],
-                  },
-                  {
-                    period: "2019 — 2021",
-                    role: "Independent Operator",
-                    org: "Freelance & Consulting",
-                    desc: "Advised early-stage founders on go-to-market and brand. Ran small projects that became the foundation for everything I'm building today.",
-                    tags: ["Branding", "GTM", "Advisory"],
-                  },
-                ].map((job) => (
-                  <div
-                    key={job.role + job.period}
-                    className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100"
-                  >
-                    <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50" />
-                    <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
-                      {job.period}
-                    </header>
-                    <div className="z-10 sm:col-span-6">
-                      <h3 className="font-medium leading-snug text-slate-200">
-                        <span className="transition-colors group-hover:text-teal-300">
-                          {job.role}
-                        </span>{" "}
-                        · {job.org}
-                      </h3>
-                      <p className="mt-2 text-sm leading-normal">{job.desc}</p>
-                      <ul className="mt-2 flex flex-wrap" aria-label="Keywords">
-                        {job.tags.map((t) => (
-                          <li
-                            key={t}
-                            className="mr-1.5 mt-2 rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium text-teal-300"
-                          >
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
             <section id="ventures" className="mb-16 scroll-mt-24 md:mb-24 lg:mb-36">
               <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-[#0f172a]/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
                 <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200">
