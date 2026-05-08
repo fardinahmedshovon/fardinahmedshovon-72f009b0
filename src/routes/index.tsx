@@ -72,7 +72,9 @@ function Portfolio() {
                 <ul className="mt-16 w-max">
                   {[
                     { href: "#about", label: "About" },
+                    { href: "#about", label: "About" },
                     { href: "#experience", label: "Experience" },
+                    { href: "#ventures", label: "Ventures" },
                     { href: "#contact", label: "Contact" },
                   ].map((item) => (
                     <li key={item.href}>
