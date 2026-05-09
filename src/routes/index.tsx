@@ -209,11 +209,9 @@ function Portfolio() {
             </section>
 
             <footer className="max-w-md pb-16 text-xs text-slate-500 sm:pb-0">
-              <p>
-                © {new Date().getFullYear()} Fardin Ahmed Shovon. All rights reserved.
-              </p>
-              <p className="mt-1 text-[11px] text-slate-600">
-                Crafted with intention. Built to last.
+              <p>© {new Date().getFullYear()} Fardin Ahmed Shovon</p>
+              <p className="mt-1 text-[11px] tracking-wider text-slate-600">
+                Ideas. Execution. Impact.
               </p>
             </footer>
           </main>
