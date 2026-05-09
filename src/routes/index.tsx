@@ -36,13 +36,13 @@ function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0f172a] font-sans leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900 scroll-smooth">
+    <div className="min-h-screen bg-[#0f172a] font-sans leading-relaxed text-slate-400 antialiased selection:bg-lime-300 selection:text-lime-950 scroll-smooth">
       <div
         ref={glowRef}
         className="pointer-events-none fixed inset-0 z-30"
         style={{
           background:
-            "radial-gradient(600px at var(--x) var(--y), rgba(45, 212, 191, 0.15), transparent 80%)",
+            "radial-gradient(600px at var(--x) var(--y), rgba(190, 242, 100, 0.13), transparent 80%)",
         }}
       />
 
@@ -54,7 +54,7 @@ function Portfolio() {
                 <img
                   src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaTZcjqC-1EHF0RuIeORQJ0AFQMidz1zBWxkBWgpq35yixO4q0AqPTwjoTIhoXGGR915aDZcMLTw0abQ8amTZMe3DJevMt8qBf7y-0WmSn10sTJkNWTJqXJyAPqcZLvI5ybobxScvxyjOEHq_IaTuozEyGKCywVMfY84epRurB8uOjOBLFbhXN42hMVrA/s1195/Gemini_Generated_Image_d9ui24d9ui24d9ui.png"
                   alt="Fardin Ahmed Shovon"
-                  className="h-32 w-32 rounded-full border-2 border-slate-700/50 object-cover shadow-2xl transition-all duration-300 hover:scale-105 hover:border-teal-300/50"
+                  className="h-32 w-32 rounded-full border-2 border-slate-700/50 object-cover shadow-2xl transition-all duration-300 hover:scale-105 hover:border-lime-300/50"
                 />
               </div>
 
@@ -172,13 +172,13 @@ function Portfolio() {
                 ].map((v) => (
                   <div
                     key={v.name}
-                    className="group rounded-lg border border-slate-800 bg-slate-900/20 p-5 transition-all hover:border-teal-300/40 hover:bg-slate-800/40"
+                    className="group rounded-lg border border-slate-800 bg-slate-900/20 p-5 transition-all hover:border-lime-300/40 hover:bg-slate-800/40"
                   >
                     <div className="flex items-center justify-between">
-                      <h3 className="font-medium text-slate-200 transition-colors group-hover:text-teal-300">
+                      <h3 className="font-medium text-slate-200 transition-colors group-hover:text-lime-300">
                         {v.name}
                       </h3>
-                      <span className="rounded-full bg-teal-400/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-teal-300">
+                      <span className="rounded-full bg-lime-400/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-lime-300">
                         {v.status}
                       </span>
                     </div>
@@ -201,7 +201,7 @@ function Portfolio() {
                 </p>
                 <a
                   href="mailto:contact@shovon.iam.bd"
-                  className="inline-block rounded border border-teal-300 px-6 py-3 font-mono text-sm font-medium text-teal-300 transition-all hover:bg-teal-300/10"
+                  className="inline-block rounded border border-lime-300 px-6 py-3 font-mono text-sm font-medium text-lime-300 transition-all hover:bg-lime-300/10"
                 >
                   Get In Touch
                 </a>
