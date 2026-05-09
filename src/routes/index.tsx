@@ -1,222 +1,261 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Facebook, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fardin Ahmed Shovon | Entrepreneur" },
+      { title: "Fardin Ahmed Shovon — Entrepreneur" },
       {
         name: "description",
         content:
-          "Fardin Ahmed Shovon — Entrepreneur turning visions into ventures. Building scalable solutions and driving innovation.",
+          "Fardin Ahmed Shovon — 18-year-old entrepreneur, founder of ApkBongo. Ideas. Execution. Impact.",
       },
-      { property: "og:title", content: "Fardin Ahmed Shovon | Entrepreneur" },
-      {
-        property: "og:description",
-        content: "Turning visions into ventures.",
-      },
+      { property: "og:title", content: "Fardin Ahmed Shovon — Entrepreneur" },
+      { property: "og:description", content: "Ideas. Execution. Impact." },
     ],
   }),
   component: Portfolio,
 });
 
-function Portfolio() {
-  const glowRef = useRef<HTMLDivElement>(null);
+const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#________";
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      const el = glowRef.current;
-      if (!el) return;
-      el.style.setProperty("--x", `${e.clientX}px`);
-      el.style.setProperty("--y", `${e.clientY}px`);
+function ScrambleText({ text }: { text: string }) {
+  const [display, setDisplay] = useState(text);
+  const frameRef = useRef<number | null>(null);
+
+  const scramble = () => {
+    if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    let frame = 0;
+    const total = 22;
+    const tick = () => {
+      const out = text
+        .split("")
+        .map((ch, i) => {
+          if (ch === " ") return " ";
+          const reveal = (frame / total) * text.length;
+          if (i < reveal) return text[i];
+          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+        })
+        .join("");
+      setDisplay(out);
+      frame++;
+      if (frame <= total) {
+        frameRef.current = requestAnimationFrame(tick);
+      } else {
+        setDisplay(text);
+      }
     };
-    window.addEventListener("mousemove", handler);
-    return () => window.removeEventListener("mousemove", handler);
-  }, []);
+    tick();
+  };
 
   return (
-    <div className="min-h-screen bg-[#0f172a] font-sans leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900 scroll-smooth">
-      <div
-        ref={glowRef}
-        className="pointer-events-none fixed inset-0 z-30"
-        style={{
-          background:
-            "radial-gradient(600px at var(--x) var(--y), rgba(45, 212, 191, 0.15), transparent 80%)",
-        }}
-      />
+    <span
+      onMouseEnter={scramble}
+      onFocus={scramble}
+      className="cursor-default"
+    >
+      {display}
+    </span>
+  );
+}
 
-      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
-            <div>
-              <div className="mb-6 lg:mb-8">
-                <img
-                  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaTZcjqC-1EHF0RuIeORQJ0AFQMidz1zBWxkBWgpq35yixO4q0AqPTwjoTIhoXGGR915aDZcMLTw0abQ8amTZMe3DJevMt8qBf7y-0WmSn10sTJkNWTJqXJyAPqcZLvI5ybobxScvxyjOEHq_IaTuozEyGKCywVMfY84epRurB8uOjOBLFbhXN42hMVrA/s1195/Gemini_Generated_Image_d9ui24d9ui24d9ui.png"
-                  alt="Fardin Ahmed Shovon"
-                  className="h-32 w-32 rounded-full border-2 border-slate-700/50 object-cover shadow-2xl transition-all duration-300 hover:scale-105 hover:border-teal-300/50"
-                />
-              </div>
-
-              <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-                <a href="/">Fardin Ahmed Shovon</a>
-              </h1>
-              <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-                Entrepreneur
-              </h2>
-              <p className="mt-4 max-w-xs leading-normal text-slate-400">
-                Turning visions into ventures.
-              </p>
-
-              <nav className="nav hidden lg:block" aria-label="In-page jump links">
-                <ul className="mt-16 w-max">
-                  {[
-                    { href: "#about", label: "About" },
-                    
-                    { href: "#ventures", label: "Ventures" },
-                    { href: "#contact", label: "Contact" },
-                  ].map((item) => (
-                    <li key={item.href}>
-                      <a className="nav-link group flex items-center py-3" href={item.href}>
-                        <span className="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200" />
-                        <span className="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 transition-all group-hover:text-slate-200">
-                          {item.label}
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-
-            <div className="mt-8 flex items-center gap-5">
-              <a
-                href="https://www.facebook.com/fardinahmedshovon"
-                target="_blank"
-                rel="noreferrer"
-                className="text-slate-400 transition-colors hover:text-slate-200"
-                title="Facebook"
-              >
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a
-                href="https://www.instagram.com/fardinahmedshovon"
-                target="_blank"
-                rel="noreferrer"
-                className="text-slate-400 transition-colors hover:text-slate-200"
-                title="Instagram"
-              >
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/fardinahmedshovon"
-                target="_blank"
-                rel="noreferrer"
-                className="text-slate-400 transition-colors hover:text-slate-200"
-                title="LinkedIn"
-              >
-                <Linkedin className="h-6 w-6" />
-              </a>
-            </div>
-          </header>
-
-          <main className="pt-24 lg:w-1/2 lg:py-24">
-            <section id="about" className="mb-16 scroll-mt-24 md:mb-24 lg:mb-36">
-              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-[#0f172a]/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200">
-                  About
-                </h2>
-              </div>
-              <div className="space-y-4 text-base text-slate-400">
-                <p>
-                  I'm Fardin Ahmed Shovon, an 18-year-old entrepreneur and student passionate
-                  about building startups, platforms, and future-focused ideas. I enjoy turning
-                  concepts into real experiences that create value and solve problems through
-                  technology and creativity.
-                </p>
-                <p>
-                  As the founder of <span className="text-slate-200">ApkBongo</span>, an app
-                  platform focused on making apps and games more accessible, I'm continuously
-                  exploring opportunities in startups, innovation, and modern web experiences.
-                  My approach combines vision, execution, and long-term thinking — with a strong
-                  focus on building meaningful things that last.
-                </p>
-                <p>
-                  I believe the future belongs to creators and builders who are willing to learn,
-                  adapt, and innovate. Every project I work on is a step toward creating impactful
-                  experiences, solving real-world problems, and building for the future.
-                </p>
-                <p>
-                  Driven by curiosity and ambition, I'm constantly learning, experimenting, and
-                  pushing ideas forward with the goal of creating startups that leave a lasting
-                  impact.
-                </p>
-              </div>
-            </section>
-
-            <section id="ventures" className="mb-16 scroll-mt-24 md:mb-24 lg:mb-36">
-              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-[#0f172a]/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200">
-                  Ventures
-                </h2>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                {[
-                  {
-                    name: "ApkBongo",
-                    tagline:
-                      "Simplifying how people discover and access apps and games.",
-                    status: "Active",
-                  },
-                ].map((v) => (
-                  <div
-                    key={v.name}
-                    className="group rounded-lg border border-slate-800 bg-slate-900/20 p-5 transition-all hover:border-teal-300/40 hover:bg-slate-800/40"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-medium text-slate-200 transition-colors group-hover:text-teal-300">
-                        {v.name}
-                      </h3>
-                      <span className="rounded-full bg-teal-400/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-teal-300">
-                        {v.status}
-                      </span>
-                    </div>
-                    <p className="mt-2 text-sm text-slate-400">{v.tagline}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="contact" className="mb-16 scroll-mt-24 md:mb-24 lg:mb-36">
-              <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-[#0f172a]/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-                <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200">
-                  Contact
-                </h2>
-              </div>
-              <div className="rounded-lg border border-slate-800 bg-slate-900/10 p-8">
-                <p className="mb-6 text-slate-400">
-                  Have a vision you want to discuss? Let's connect and build something
-                  impactful together.
-                </p>
-                <a
-                  href="mailto:contact@shovon.iam.bd"
-                  className="inline-block rounded border border-teal-300 px-6 py-3 font-mono text-sm font-medium text-teal-300 transition-all hover:bg-teal-300/10"
-                >
-                  Get In Touch
-                </a>
-              </div>
-            </section>
-
-            <footer className="max-w-md pb-16 text-xs text-slate-500 sm:pb-0">
-              <p>© {new Date().getFullYear()} Fardin Ahmed Shovon</p>
-              <p className="mt-1 text-[11px] tracking-wider text-slate-600">
-                Ideas. Execution. Impact.
-              </p>
-            </footer>
-          </main>
+function Portfolio() {
+  return (
+    <div className="min-h-screen bg-[#0b0b0d] font-body text-[#a8a9ad] antialiased selection:bg-[#5a5c62] selection:text-white">
+      {/* Top nav */}
+      <header className="sticky top-0 z-40 border-b border-[#1a1b1f] bg-[#0b0b0d]/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
+          <a href="/" className="font-mono text-xs uppercase tracking-[0.2em] text-white">
+            FAS<span className="text-[#5a5c62]">.</span>
+          </a>
+          <nav className="hidden gap-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[#7a7b80] md:flex">
+            <a href="#about" className="transition-colors hover:text-white">About</a>
+            <a href="#ventures" className="transition-colors hover:text-white">Ventures</a>
+            <a href="#contact" className="transition-colors hover:text-white">Contact</a>
+          </nav>
+          <a
+            href="mailto:contact@shovon.iam.bd"
+            className="font-mono text-[11px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-70"
+          >
+            Get in touch →
+          </a>
         </div>
-      </div>
+      </header>
+
+      {/* Hero — full width, vertical, big serif */}
+      <section className="mx-auto max-w-6xl px-6 pb-24 pt-20 md:px-10 md:pb-40 md:pt-32">
+        <p className="mb-10 font-mono text-[11px] uppercase tracking-[0.3em] text-[#5a5c62]">
+          01 — Entrepreneur · Dhaka, BD
+        </p>
+        <h1 className="font-serif text-[15vw] font-light leading-[0.92] tracking-tight text-white md:text-[10rem]">
+          <ScrambleText text="Fardin" />
+          <br />
+          <span className="italic text-[#5a5c62]">
+            <ScrambleText text="Ahmed" />
+          </span>{" "}
+          <ScrambleText text="Shovon" />
+        </h1>
+
+        <div className="mt-16 grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="h-px w-16 bg-[#5a5c62]" />
+            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-[#7a7b80]">
+              Founder · ApkBongo
+            </p>
+          </div>
+          <p className="font-serif text-2xl leading-snug text-white md:col-span-7 md:text-3xl">
+            Turning visions into ventures — building startups, platforms, and
+            future-focused ideas that solve real problems.
+          </p>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="border-t border-[#1a1b1f]">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-12 md:px-10 md:py-32">
+          <div className="md:col-span-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#5a5c62]">
+              02 — About
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-light text-white md:text-5xl">
+              The story <span className="italic text-[#5a5c62]">so far.</span>
+            </h2>
+          </div>
+          <div className="space-y-6 text-base leading-relaxed text-[#a8a9ad] md:col-span-8 md:text-lg">
+            <p>
+              I'm an 18-year-old entrepreneur and student passionate about
+              building startups, platforms, and future-focused ideas. I enjoy
+              turning concepts into real experiences that create value and
+              solve problems through technology and creativity.
+            </p>
+            <p>
+              As the founder of <span className="text-white">ApkBongo</span> —
+              an app platform focused on making apps and games more accessible —
+              I'm continuously exploring opportunities in startups, innovation,
+              and modern web experiences. My approach combines vision, execution,
+              and long-term thinking.
+            </p>
+            <p>
+              I believe the future belongs to creators and builders who are
+              willing to learn, adapt, and innovate. Driven by curiosity and
+              ambition, every project is a step toward creating impactful
+              experiences and building startups that leave a lasting impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Ventures */}
+      <section id="ventures" className="border-t border-[#1a1b1f]">
+        <div className="mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-32">
+          <div className="mb-16 flex items-end justify-between">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#5a5c62]">
+                03 — Ventures
+              </p>
+              <h2 className="mt-4 font-serif text-4xl font-light text-white md:text-5xl">
+                Things I've <span className="italic text-[#5a5c62]">built.</span>
+              </h2>
+            </div>
+            <p className="hidden font-mono text-[11px] uppercase tracking-[0.25em] text-[#7a7b80] md:block">
+              01 / 01
+            </p>
+          </div>
+
+          <a
+            href="#"
+            className="group block border-t border-[#1a1b1f] py-10 transition-colors hover:border-[#5a5c62]"
+          >
+            <div className="grid items-baseline gap-6 md:grid-cols-12">
+              <div className="md:col-span-1">
+                <span className="font-mono text-xs text-[#5a5c62]">01</span>
+              </div>
+              <div className="md:col-span-4">
+                <h3 className="font-serif text-3xl font-light text-white transition-transform duration-300 group-hover:translate-x-2 md:text-4xl">
+                  ApkBongo
+                </h3>
+              </div>
+              <div className="md:col-span-5">
+                <p className="text-base text-[#a8a9ad] md:text-lg">
+                  Simplifying how people discover and access apps and games.
+                </p>
+              </div>
+              <div className="flex items-center justify-between md:col-span-2 md:justify-end">
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#5a5c62]">
+                  Active
+                </span>
+                <ArrowUpRight className="ml-4 h-5 w-5 text-[#5a5c62] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white" />
+              </div>
+            </div>
+          </a>
+          <div className="border-t border-[#1a1b1f]" />
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="border-t border-[#1a1b1f]">
+        <div className="mx-auto max-w-6xl px-6 py-32 md:px-10 md:py-48">
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#5a5c62]">
+            04 — Contact
+          </p>
+          <h2 className="mt-6 font-serif text-5xl font-light leading-[0.95] text-white md:text-8xl">
+            Have a vision? <br />
+            <span className="italic text-[#5a5c62]">Let's build it.</span>
+          </h2>
+
+          <a
+            href="mailto:contact@shovon.iam.bd"
+            className="mt-12 inline-flex items-center gap-3 border-b border-[#5a5c62] pb-2 font-mono text-sm uppercase tracking-[0.25em] text-white transition-all hover:gap-5 hover:border-white"
+          >
+            contact@shovon.iam.bd
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-[#1a1b1f]">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center md:px-10">
+          <div>
+            <p className="font-mono text-xs text-[#7a7b80]">
+              © {new Date().getFullYear()} Fardin Ahmed Shovon
+            </p>
+            <p className="mt-2 font-serif text-sm italic text-[#5a5c62]">
+              Ideas. Execution. Impact.
+            </p>
+          </div>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://www.facebook.com/fardinahmedshovon"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#7a7b80] transition-colors hover:text-white"
+              title="Facebook"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/fardinahmedshovon"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#7a7b80] transition-colors hover:text-white"
+              title="Instagram"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/fardinahmedshovon"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#7a7b80] transition-colors hover:text-white"
+              title="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
