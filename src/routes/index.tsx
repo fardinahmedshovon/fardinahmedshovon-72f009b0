@@ -129,19 +129,27 @@ function Portfolio() {
               </div>
               <div className="space-y-4 text-base text-slate-400">
                 <p>
-                  I'm an entrepreneur focused on building products that solve real problems
-                  for real people. My work sits at the intersection of technology, brand,
-                  and operations — turning early-stage ideas into companies that ship,
-                  grow, and last.
+                  I'm Fardin Ahmed Shovon, an 18-year-old entrepreneur and student passionate
+                  about building startups, platforms, and future-focused ideas. I enjoy turning
+                  concepts into real experiences that create value and solve problems through
+                  technology and creativity.
                 </p>
                 <p>
-                  Over the past few years I've launched and led ventures across digital
-                  products and services, building teams from zero and shaping every layer
-                  from strategy down to the customer experience.
+                  As the founder of <span className="text-slate-200">ApkBongo</span>, an app
+                  platform focused on making apps and games more accessible, I'm continuously
+                  exploring opportunities in startups, innovation, and modern web experiences.
+                  My approach combines vision, execution, and long-term thinking — with a strong
+                  focus on building meaningful things that last.
                 </p>
                 <p>
-                  When I'm not building, I'm usually mentoring younger founders, reading
-                  about business history, or sketching the next idea on a whiteboard.
+                  I believe the future belongs to creators and builders who are willing to learn,
+                  adapt, and innovate. Every project I work on is a step toward creating impactful
+                  experiences, solving real-world problems, and building for the future.
+                </p>
+                <p>
+                  Driven by curiosity and ambition, I'm constantly learning, experimenting, and
+                  pushing ideas forward with the goal of creating startups that leave a lasting
+                  impact.
                 </p>
               </div>
             </section>
@@ -156,24 +164,10 @@ function Portfolio() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {[
                   {
-                    name: "Venture One",
-                    tagline: "A short one-line description of what it does.",
+                    name: "ApkBongo",
+                    tagline:
+                      "Simplifying how people discover and access apps and games.",
                     status: "Active",
-                  },
-                  {
-                    name: "Venture Two",
-                    tagline: "Another product or company you've built.",
-                    status: "Active",
-                  },
-                  {
-                    name: "Venture Three",
-                    tagline: "An earlier project worth mentioning.",
-                    status: "Acquired",
-                  },
-                  {
-                    name: "Venture Four",
-                    tagline: "Experiment or side bet.",
-                    status: "Sunset",
                   },
                 ].map((v) => (
                   <div
@@ -206,7 +200,7 @@ function Portfolio() {
                   impactful together.
                 </p>
                 <a
-                  href="mailto:hello@fardinahmedshovon.com"
+                  href="mailto:contact@shovon.iam.bd"
                   className="inline-block rounded border border-teal-300 px-6 py-3 font-mono text-sm font-medium text-teal-300 transition-all hover:bg-teal-300/10"
                 >
                   Get In Touch
