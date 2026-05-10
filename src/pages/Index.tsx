@@ -151,7 +151,7 @@ export default function Index() {
               </div>
               <div className="space-y-4 text-base text-slate-400">
                 <p>
-                  I'm Fardin Ahmed Shovon, an 18-year-old entrepreneur and student passionate
+                  I'm Fardin Ahmed Shovon, an 19-year-old entrepreneur and student passionate
                   about building startups, platforms, and future-focused ideas. I enjoy turning
                   concepts into real experiences that create value and solve problems through
                   technology and creativity.
