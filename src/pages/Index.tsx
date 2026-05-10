@@ -25,13 +25,16 @@ export default function Index() {
           content="Fardin Ahmed Shovon — 18-year-old entrepreneur, student, and founder of ApkBongo. Building startups, platforms, and future-focused ideas."
         />
         <link rel="canonical" href="https://fardinahmedshovon.com/" />
-        <meta property="og:title" content="Fardin Ahmed Shovon | Entrepreneur" />
+        <meta property="og:title" content="Fardin Ahmed Shovon — Entrepreneur & Founder of ApkBongo" />
         <meta
           property="og:description"
           content="Founder of ApkBongo. Turning visions into ventures."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://fardinahmedshovon.com/" />
+        <meta property="og:image" content="https://fardinahmedshovon.com/images/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://fardinahmedshovon.com/images/og-image.jpg" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -65,9 +68,12 @@ export default function Index() {
             <div>
               <div className="mb-6 lg:mb-8">
                 <img
-                  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaTZcjqC-1EHF0RuIeORQJ0AFQMidz1zBWxkBWgpq35yixO4q0AqPTwjoTIhoXGGR915aDZcMLTw0abQ8amTZMe3DJevMt8qBf7y-0WmSn10sTJkNWTJqXJyAPqcZLvI5ybobxScvxyjOEHq_IaTuozEyGKCywVMfY84epRurB8uOjOBLFbhXN42hMVrA/s1195/Gemini_Generated_Image_d9ui24d9ui24d9ui.png"
-                  alt="Fardin Ahmed Shovon"
+                  src="/images/profile/shovon.webp"
+                  alt="Portrait of Fardin Ahmed Shovon, entrepreneur and founder of ApkBongo"
                   loading="eager"
+                  decoding="async"
+                  width={128}
+                  height={128}
                   className="h-32 w-32 rounded-full border-2 border-slate-700/50 object-cover shadow-2xl transition-all duration-300 hover:scale-105 hover:border-teal-300/50"
                 />
               </div>
