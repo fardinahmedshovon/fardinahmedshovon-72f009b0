@@ -1,27 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Fardin Ahmed Shovon | Entrepreneur" },
-      {
-        name: "description",
-        content:
-          "Fardin Ahmed Shovon — Entrepreneur turning visions into ventures. Building scalable solutions and driving innovation.",
-      },
-      { property: "og:title", content: "Fardin Ahmed Shovon | Entrepreneur" },
-      {
-        property: "og:description",
-        content: "Turning visions into ventures.",
-      },
-    ],
-  }),
-  component: Portfolio,
-});
-
-function Portfolio() {
+export default function Index() {
   const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,6 +18,38 @@ function Portfolio() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] font-sans leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900 scroll-smooth">
+      <Helmet>
+        <title>Fardin Ahmed Shovon | Entrepreneur & Founder of ApkBongo</title>
+        <meta
+          name="description"
+          content="Fardin Ahmed Shovon — 18-year-old entrepreneur, student, and founder of ApkBongo. Building startups, platforms, and future-focused ideas."
+        />
+        <link rel="canonical" href="https://fardinahmedshovon.com/" />
+        <meta property="og:title" content="Fardin Ahmed Shovon | Entrepreneur" />
+        <meta
+          property="og:description"
+          content="Founder of ApkBongo. Turning visions into ventures."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://fardinahmedshovon.com/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Fardin Ahmed Shovon",
+            jobTitle: "Entrepreneur",
+            url: "https://fardinahmedshovon.com",
+            email: "contact@shovon.iam.bd",
+            sameAs: [
+              "https://www.facebook.com/fardinahmedshovon",
+              "https://www.instagram.com/fardinahmedshovon",
+              "https://www.linkedin.com/in/fardinahmedshovon",
+            ],
+            worksFor: { "@type": "Organization", name: "ApkBongo" },
+          })}
+        </script>
+      </Helmet>
+
       <div
         ref={glowRef}
         className="pointer-events-none fixed inset-0 z-30"
@@ -54,6 +67,7 @@ function Portfolio() {
                 <img
                   src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaTZcjqC-1EHF0RuIeORQJ0AFQMidz1zBWxkBWgpq35yixO4q0AqPTwjoTIhoXGGR915aDZcMLTw0abQ8amTZMe3DJevMt8qBf7y-0WmSn10sTJkNWTJqXJyAPqcZLvI5ybobxScvxyjOEHq_IaTuozEyGKCywVMfY84epRurB8uOjOBLFbhXN42hMVrA/s1195/Gemini_Generated_Image_d9ui24d9ui24d9ui.png"
                   alt="Fardin Ahmed Shovon"
+                  loading="eager"
                   className="h-32 w-32 rounded-full border-2 border-slate-700/50 object-cover shadow-2xl transition-all duration-300 hover:scale-105 hover:border-teal-300/50"
                 />
               </div>
@@ -72,7 +86,6 @@ function Portfolio() {
                 <ul className="mt-16 w-max">
                   {[
                     { href: "#about", label: "About" },
-                    
                     { href: "#ventures", label: "Ventures" },
                     { href: "#contact", label: "Contact" },
                   ].map((item) => (
@@ -96,6 +109,7 @@ function Portfolio() {
                 rel="noreferrer"
                 className="text-slate-400 transition-colors hover:text-slate-200"
                 title="Facebook"
+                aria-label="Facebook"
               >
                 <Facebook className="h-6 w-6" />
               </a>
@@ -105,6 +119,7 @@ function Portfolio() {
                 rel="noreferrer"
                 className="text-slate-400 transition-colors hover:text-slate-200"
                 title="Instagram"
+                aria-label="Instagram"
               >
                 <Instagram className="h-6 w-6" />
               </a>
@@ -114,6 +129,7 @@ function Portfolio() {
                 rel="noreferrer"
                 className="text-slate-400 transition-colors hover:text-slate-200"
                 title="LinkedIn"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
