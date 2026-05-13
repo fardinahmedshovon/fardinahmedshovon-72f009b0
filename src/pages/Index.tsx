@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Linkedin, Twitter, Instagram, Github, Mail, ArrowUpRight } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
 const BG = "#403f3c";
-const FG = "#F5F5F5";
+const FG = "#F8F9FA";
 const MUTED = "#bdbab3";
-const BORDER = "rgba(245,245,245,0.14)";
+const BORDER = "rgba(248,249,250,0.14)";
 
 const NAV = [
   { id: "about", label: "About" },
@@ -16,32 +16,16 @@ const NAV = [
 const VENTURES = [
   {
     title: "ApkBongo",
-    description:
-      "A curated Android app discovery platform built for speed, clarity, and editorial-quality writing.",
+    description: "Simplifying how people discover and access apps and games.",
     url: "https://apkbongo.com",
-    tag: "Founder · 2024",
-  },
-  {
-    title: "Founder Notes",
-    description:
-      "A personal writing space documenting product, design, and lessons from building from Bangladesh.",
-    url: "#",
-    tag: "Writing",
-  },
-  {
-    title: "Studio Work",
-    description:
-      "Independent product, brand, and engineering work for early-stage founders across South Asia and the GCC.",
-    url: "#",
-    tag: "Independent",
+    tag: "Founder · Active",
   },
 ];
 
 const SOCIALS = [
-  { icon: Linkedin, url: "https://linkedin.com/", label: "LinkedIn" },
-  { icon: Twitter, url: "https://x.com/", label: "X" },
-  { icon: Instagram, url: "https://instagram.com/", label: "Instagram" },
-  { icon: Github, url: "https://github.com/", label: "GitHub" },
+  { icon: Facebook, url: "https://www.facebook.com/fardinahmedshovon", label: "Facebook" },
+  { icon: Instagram, url: "https://www.instagram.com/fardinahmedshovon", label: "Instagram" },
+  { icon: Linkedin, url: "https://www.linkedin.com/in/fardinahmedshovon", label: "LinkedIn" },
   { icon: Mail, url: "mailto:contact@shovon.iam.bd", label: "Email" },
 ];
 
@@ -73,24 +57,27 @@ export default function Index() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap"
         />
       </Helmet>
 
       {/* Top nav */}
-      <header className="sticky top-0 z-40 backdrop-blur-md" style={{ backgroundColor: `${BG}cc`, borderBottom: `1px solid ${BORDER}` }}>
-        <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <a
-            href="#top"
-            className="text-sm font-medium tracking-wide"
-            style={{ fontFamily: "Fraunces, serif" }}
+      <header
+        className="sticky top-0 z-40 backdrop-blur-md"
+        style={{ backgroundColor: `${BG}cc`, borderBottom: `1px solid ${BORDER}` }}
+      >
+        <nav className="mx-auto flex max-w-5xl items-center justify-center px-6 py-4">
+          <ul
+            className="flex items-center gap-8 text-xs uppercase tracking-[0.22em]"
+            style={{ color: MUTED }}
           >
-            FAS.
-          </a>
-          <ul className="flex items-center gap-7 text-xs uppercase tracking-[0.18em]" style={{ color: MUTED }}>
             {NAV.map((n) => (
               <li key={n.id}>
-                <a href={`#${n.id}`} className="transition-colors hover:text-white">
+                <a
+                  href={`#${n.id}`}
+                  className="transition-colors duration-300 hover:text-[color:var(--fg)]"
+                  style={{ ["--fg" as never]: FG }}
+                >
                   {n.label}
                 </a>
               </li>
@@ -105,10 +92,11 @@ export default function Index() {
           <div
             className="overflow-hidden rounded-full"
             style={{
-              width: 168,
-              height: 168,
-              border: `1px solid ${BORDER}`,
-              boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
+              width: 176,
+              height: 176,
+              border: `1px solid ${FG}`,
+              boxShadow:
+                "0 25px 50px -20px rgba(0,0,0,0.55), 0 8px 20px -8px rgba(0,0,0,0.45)",
             }}
           >
             <img
@@ -121,18 +109,21 @@ export default function Index() {
 
           <h1
             className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-6xl"
-            style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
+            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
           >
             Fardin Ahmed Shovon
           </h1>
 
           <p
             className="mt-5 text-xs uppercase tracking-[0.32em]"
-            style={{ color: MUTED }}
+            style={{ color: MUTED, fontFamily: "Inter, sans-serif" }}
           >
             Entrepreneur
           </p>
-          <p className="mt-3 max-w-md text-base md:text-lg" style={{ color: FG }}>
+          <p
+            className="mt-3 max-w-md text-base md:text-lg"
+            style={{ color: FG, fontFamily: "Inter, sans-serif" }}
+          >
             Turning visions into ventures.
           </p>
 
@@ -142,10 +133,10 @@ export default function Index() {
               <li key={label}>
                 <a
                   href={url}
-                  target="_blank"
+                  target={url.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
                   aria-label={label}
-                  className="block opacity-60 transition-opacity hover:opacity-100"
+                  className="block opacity-60 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -155,80 +146,105 @@ export default function Index() {
         </section>
 
         {/* About */}
-        <section id="about" className="border-t py-20 md:py-28" style={{ borderColor: BORDER }}>
+        <section
+          id="about"
+          className="border-t py-20 md:py-28"
+          style={{ borderColor: BORDER }}
+        >
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.32em]" style={{ color: MUTED }}>
               About
             </p>
             <h2
               className="mt-4 text-3xl md:text-4xl"
-              style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
+              style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
             >
               A founder building quietly, shipping deliberately.
             </h2>
-            <div className="mt-8 space-y-5 text-[15px] leading-relaxed md:text-base" style={{ color: MUTED }}>
+            <div
+              className="mt-8 space-y-5 text-[15px] leading-relaxed md:text-base"
+              style={{ color: MUTED }}
+            >
               <p>
-                I&apos;m an entrepreneur and developer based in Bangladesh, working at the
-                intersection of design, engineering, and product. I focus on calm,
-                well-considered software that respects the people who use it.
+                I’m Fardin Ahmed Shovon, an 18-year-old entrepreneur and student passionate
+                about building startups, platforms, and future-focused ideas. I enjoy turning
+                concepts into real experiences that create value and solve problems through
+                technology and creativity.
               </p>
               <p>
-                Today I lead{" "}
+                As the founder of{" "}
                 <a
                   href="https://apkbongo.com"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="underline-offset-4 hover:underline"
+                  className="underline-offset-4 transition-colors hover:underline"
                   style={{ color: FG }}
                 >
                   ApkBongo
                 </a>
-                , a curated Android discovery platform. Before that, I spent years
-                freelancing — designing landing pages, building dashboards, and helping
-                early-stage founders get their first versions out the door.
+                , an app platform focused on making apps and games more accessible, I’m
+                continuously exploring opportunities in startups, innovation, and modern web
+                experiences. My approach combines vision, execution, and long-term thinking —
+                with a strong focus on building meaningful things that last.
+              </p>
+              <p>
+                I believe the future belongs to creators and builders who are willing to
+                learn, adapt, and innovate. Every project I work on is a step toward creating
+                impactful experiences, solving real-world problems, and building for the
+                future.
+              </p>
+              <p>
+                Driven by curiosity and ambition, I’m constantly learning, experimenting, and
+                pushing ideas forward with the goal of creating startups that leave a lasting
+                impact.
               </p>
             </div>
           </div>
         </section>
 
         {/* Ventures */}
-        <section id="ventures" className="border-t py-20 md:py-28" style={{ borderColor: BORDER }}>
+        <section
+          id="ventures"
+          className="border-t py-20 md:py-28"
+          style={{ borderColor: BORDER }}
+        >
           <div className="mb-14 text-center">
             <p className="text-xs uppercase tracking-[0.32em]" style={{ color: MUTED }}>
               Ventures
             </p>
             <h2
               className="mt-4 text-3xl md:text-4xl"
-              style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
+              style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
             >
               Selected work & companies.
             </h2>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto grid max-w-2xl gap-5">
             {VENTURES.map((v) => (
               <a
                 key={v.title}
                 href={v.url}
                 target={v.url.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer noopener"
-                className="group flex flex-col rounded-2xl p-7 transition-colors"
+                className="group flex flex-col rounded-2xl p-7 transition-all duration-300 hover:-translate-y-0.5"
                 style={{
                   border: `1px solid ${BORDER}`,
-                  backgroundColor: "rgba(245,245,245,0.02)",
+                  backgroundColor: "rgba(248,249,250,0.02)",
                 }}
               >
                 <div className="flex items-start justify-between">
-                  <span className="text-[11px] uppercase tracking-[0.22em]" style={{ color: MUTED }}>
+                  <span
+                    className="text-[11px] uppercase tracking-[0.22em]"
+                    style={{ color: MUTED }}
+                  >
                     {v.tag}
                   </span>
-                  <ArrowUpRight
-                    className="h-4 w-4 opacity-50 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
-                  />
+                  <ArrowUpRight className="h-4 w-4 opacity-50 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
                 </div>
                 <h3
                   className="mt-8 text-2xl"
-                  style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
+                  style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
                 >
                   {v.title}
                 </h3>
@@ -241,23 +257,30 @@ export default function Index() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="border-t py-24 text-center md:py-32" style={{ borderColor: BORDER }}>
+        <section
+          id="contact"
+          className="border-t py-24 text-center md:py-32"
+          style={{ borderColor: BORDER }}
+        >
           <p className="text-xs uppercase tracking-[0.32em]" style={{ color: MUTED }}>
             Contact
           </p>
           <h2
             className="mx-auto mt-4 max-w-2xl text-3xl md:text-5xl"
-            style={{ fontFamily: "Fraunces, serif", fontWeight: 600 }}
+            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
           >
             Have an idea worth building?
           </h2>
-          <p className="mx-auto mt-5 max-w-md text-[15px]" style={{ color: MUTED }}>
-            I&apos;m always open to thoughtful conversations about new ventures,
-            collaborations, or just a good cup of coffee.
+          <p
+            className="mx-auto mt-5 max-w-md text-[15px]"
+            style={{ color: MUTED }}
+          >
+            I’m always open to thoughtful conversations about new ventures, collaborations,
+            or just a good cup of coffee.
           </p>
           <a
             href="mailto:contact@shovon.iam.bd"
-            className="mt-10 inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-medium transition-transform hover:-translate-y-0.5"
+            className="mt-10 inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
             style={{ backgroundColor: FG, color: BG }}
           >
             Get in touch
@@ -266,9 +289,19 @@ export default function Index() {
         </section>
       </main>
 
-      <footer className="border-t py-10 text-center text-xs" style={{ borderColor: BORDER, color: MUTED }}>
-        <p>© 2026 Fardin Ahmed Shovon</p>
-        <p className="mt-2 uppercase tracking-[0.32em]">Ideas. Execution. Impact.</p>
+      <footer
+        className="border-t py-10 text-center"
+        style={{ borderColor: BORDER }}
+      >
+        <p className="text-sm" style={{ color: FG }}>
+          © 2026 Fardin Ahmed Shovon
+        </p>
+        <p
+          className="mt-2 text-[11px] uppercase tracking-[0.32em]"
+          style={{ color: MUTED }}
+        >
+          Ideas. Execution. Impact.
+        </p>
       </footer>
     </div>
   );
