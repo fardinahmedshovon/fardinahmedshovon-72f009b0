@@ -171,7 +171,7 @@ export default function Index() {
                   href="https://apkbongo.com"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="underline-offset-4 transition-colors hover:underline"
+                  className="underline underline-offset-4 decoration-1 transition-opacity hover:opacity-80"
                   style={{ color: FG }}
                 >
                   ApkBongo
