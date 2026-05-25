@@ -3,5 +3,51 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "framework": null,
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [{ "source": "/((?!.*\\.).*)", "destination": "/index.html" }],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.shovon.iam.bd" }],
+      "destination": "https://shovon.iam.bd/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(webp|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|otf)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/profile/shovon.webp",
+      "headers": [
+        { "key": "Link", "value": "</images/profile/shovon.webp>; rel=preload; as=image" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Link", "value": "</images/profile/shovon.webp>; rel=preload; as=image, <https://fonts.gstatic.com>; rel=preconnect; crossorigin" }
+      ]
+    }
+  ]
 }
