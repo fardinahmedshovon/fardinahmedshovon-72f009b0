@@ -47,18 +47,12 @@ export default function Index() {
       className="min-h-screen antialiased"
     >
       <Helmet>
-        <title>Fardin Ahmed Shovon — Entrepreneur</title>
+        <title>Fardin Ahmed Shovon — Entrepreneur & Founder of ApkBongo</title>
         <meta
           name="description"
           content="Fardin Ahmed Shovon — Entrepreneur turning visions into ventures. Founder of ApkBongo, building thoughtful digital products from Bangladesh."
         />
         <meta name="theme-color" content={BG} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap"
-        />
       </Helmet>
 
       {/* Top nav */}
