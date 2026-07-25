@@ -45,14 +45,8 @@ export default function Index() {
       }}
       className="min-h-screen antialiased"
     >
-      <Helmet>
-        <title>Fardin Ahmed Shovon — Entrepreneur & Founder of ApkBongo</title>
-        <meta
-          name="description"
-          content="Fardin Ahmed Shovon — Entrepreneur turning visions into ventures. Founder of ApkBongo, building thoughtful digital products from Bangladesh."
-        />
-        <meta name="theme-color" content={BG} />
-      </Helmet>
+
+
 
       {/* Top nav */}
       <header
