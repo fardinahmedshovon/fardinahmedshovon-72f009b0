@@ -1,6 +1,6 @@
 import { createServer } from "vite";
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
+import { StaticRouter } from "react-router";
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import React from "react";
