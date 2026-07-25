@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
 const BG = "#403f3c";
@@ -46,14 +45,8 @@ export default function Index() {
       }}
       className="min-h-screen antialiased"
     >
-      <Helmet>
-        <title>Fardin Ahmed Shovon — Entrepreneur & Founder of ApkBongo</title>
-        <meta
-          name="description"
-          content="Fardin Ahmed Shovon — Entrepreneur turning visions into ventures. Founder of ApkBongo, building thoughtful digital products from Bangladesh."
-        />
-        <meta name="theme-color" content={BG} />
-      </Helmet>
+
+
 
       {/* Top nav */}
       <header
@@ -160,7 +153,7 @@ export default function Index() {
               style={{ color: MUTED }}
             >
               <p>
-                I’m Fardin Ahmed Shovon, an 19-year-old entrepreneur and student passionate
+                I’m Fardin Ahmed Shovon, a 19-year-old entrepreneur and student passionate
                 about building startups, platforms, and future-focused ideas. I enjoy turning
                 concepts into real experiences that create value and solve problems through
                 technology and creativity.
@@ -182,15 +175,9 @@ export default function Index() {
                 with a strong focus on building meaningful things that last.
               </p>
               <p>
-                I believe the future belongs to creators and builders who are willing to
-                learn, adapt, and innovate. Every project I work on is a step toward creating
-                impactful experiences, solving real-world problems, and building for the
-                future.
-              </p>
-              <p>
-                Driven by curiosity and ambition, I’m constantly learning, experimenting, and
-                pushing ideas forward with the goal of creating startups that leave a lasting
-                impact.
+                Outside of ApkBongo, I’m constantly learning, prototyping, and shipping small
+                experiments — most of them fail, a few turn into something worth pursuing. That
+                loop is what I care about most right now.
               </p>
             </div>
           </div>
