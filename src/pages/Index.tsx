@@ -175,15 +175,9 @@ export default function Index() {
                 with a strong focus on building meaningful things that last.
               </p>
               <p>
-                I believe the future belongs to creators and builders who are willing to
-                learn, adapt, and innovate. Every project I work on is a step toward creating
-                impactful experiences, solving real-world problems, and building for the
-                future.
-              </p>
-              <p>
-                Driven by curiosity and ambition, I’m constantly learning, experimenting, and
-                pushing ideas forward with the goal of creating startups that leave a lasting
-                impact.
+                Outside of ApkBongo, I’m constantly learning, prototyping, and shipping small
+                experiments — most of them fail, a few turn into something worth pursuing. That
+                loop is what I care about most right now.
               </p>
             </div>
           </div>
