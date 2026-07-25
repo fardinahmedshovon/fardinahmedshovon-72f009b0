@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 
 const BG = "#403f3c";
