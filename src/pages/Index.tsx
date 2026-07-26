@@ -1,5 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import CommandPalette from "@/components/CommandPalette";
+
+const GRAIN_SVG =
+  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")";
+
 
 const BG = "#403f3c";
 const FG = "#F8F9FA";
@@ -29,6 +34,25 @@ const SOCIALS = [
 ];
 
 export default function Index() {
+  const cardRef = useRef<HTMLAnchorElement | null>(null);
+
+  function handleCardMove(e: React.MouseEvent) {
+    const el = cardRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const rx = ((y / r.height) - 0.5) * -12;
+    const ry = ((x / r.width) - 0.5) * 12;
+    el.style.transform = `perspective(500px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(1.02)`;
+  }
+
+  function handleCardLeave() {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transform = "perspective(500px) rotateX(0) rotateY(0) scale(1)";
+  }
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
     return () => {
@@ -39,12 +63,31 @@ export default function Index() {
   return (
     <div
       style={{
+        position: "relative",
         backgroundColor: BG,
         color: FG,
         fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
       }}
       className="min-h-screen antialiased"
     >
+      {/* Grain overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          inset: 0,
+          backgroundImage: GRAIN_SVG,
+          backgroundRepeat: "repeat",
+          opacity: 0.06,
+          mixBlendMode: "overlay",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
+
+      <CommandPalette />
+
+
 
 
 
@@ -95,7 +138,7 @@ export default function Index() {
           </div>
 
           <h1
-            className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-6xl"
+            className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-6xl text-balance"
             style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
           >
             Fardin Ahmed Shovon
@@ -108,11 +151,12 @@ export default function Index() {
             Entrepreneur
           </p>
           <p
-            className="mt-3 max-w-md text-base md:text-lg"
+            className="mt-3 max-w-md text-base md:text-lg text-balance"
             style={{ color: FG, fontFamily: "Inter, sans-serif" }}
           >
             Turning visions into ventures.
           </p>
+
 
           {/* Socials */}
           <ul className="mt-10 flex items-center gap-6">
@@ -143,11 +187,12 @@ export default function Index() {
               About
             </p>
             <h2
-              className="mt-4 text-3xl md:text-4xl"
+              className="mt-4 text-3xl md:text-4xl text-balance"
               style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
             >
               A founder building quietly, shipping deliberately.
             </h2>
+
             <div
               className="mt-8 space-y-5 text-[15px] leading-relaxed md:text-base"
               style={{ color: MUTED }}
@@ -205,15 +250,20 @@ export default function Index() {
             {VENTURES.map((v) => (
               <a
                 key={v.title}
+                ref={cardRef}
+                onMouseMove={handleCardMove}
+                onMouseLeave={handleCardLeave}
                 href={v.url}
                 target={v.url.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer noopener"
-                className="group flex flex-col rounded-2xl p-7 transition-all duration-300 hover:-translate-y-0.5"
+                className="group flex flex-col rounded-2xl p-7 hover:-translate-y-0.5"
                 style={{
                   border: `1px solid ${BORDER}`,
                   backgroundColor: "rgba(248,249,250,0.02)",
+                  transition: "border-color 0.2s, transform 0.15s ease",
                 }}
               >
+
                 <div className="flex items-start justify-between">
                   <span
                     className="text-[11px] uppercase tracking-[0.22em]"
