@@ -138,7 +138,7 @@ export default function Index() {
           </div>
 
           <h1
-            className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-6xl"
+            className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-6xl text-balance"
             style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
           >
             Fardin Ahmed Shovon
@@ -151,11 +151,12 @@ export default function Index() {
             Entrepreneur
           </p>
           <p
-            className="mt-3 max-w-md text-base md:text-lg"
+            className="mt-3 max-w-md text-base md:text-lg text-balance"
             style={{ color: FG, fontFamily: "Inter, sans-serif" }}
           >
             Turning visions into ventures.
           </p>
+
 
           {/* Socials */}
           <ul className="mt-10 flex items-center gap-6">
