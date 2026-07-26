@@ -131,7 +131,24 @@ export default function Index() {
 
       <main id="top" className="mx-auto max-w-5xl px-6">
         {/* Hero */}
-        <section className="flex flex-col items-center pt-20 pb-24 text-center md:pt-28 md:pb-32">
+        <section
+          ref={heroRef as React.RefObject<HTMLElement>}
+          onMouseMove={handleHeroMove}
+          className="flex flex-col items-center pt-20 pb-24 text-center md:pt-28 md:pb-32"
+          style={{ position: "relative", overflow: "hidden" }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(300px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(248,249,250,0.08), transparent 70%)",
+              transition: "background 0.1s ease",
+            }}
+          />
+
           <div
             className="overflow-hidden rounded-full"
             style={{
