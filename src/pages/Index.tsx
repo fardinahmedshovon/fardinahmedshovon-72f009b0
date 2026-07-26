@@ -35,6 +35,15 @@ const SOCIALS = [
 
 export default function Index() {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  function handleHeroMove(e: React.MouseEvent) {
+    const el = heroRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--spot-x", `${e.clientX - r.left}px`);
+    el.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
+  }
 
   function handleCardMove(e: React.MouseEvent) {
     const el = cardRef.current;
@@ -52,6 +61,7 @@ export default function Index() {
     if (!el) return;
     el.style.transform = "perspective(500px) rotateX(0) rotateY(0) scale(1)";
   }
+
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
