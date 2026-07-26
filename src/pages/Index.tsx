@@ -35,6 +35,15 @@ const SOCIALS = [
 
 export default function Index() {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  function handleHeroMove(e: React.MouseEvent) {
+    const el = heroRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--spot-x", `${e.clientX - r.left}px`);
+    el.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
+  }
 
   function handleCardMove(e: React.MouseEvent) {
     const el = cardRef.current;
@@ -52,6 +61,7 @@ export default function Index() {
     if (!el) return;
     el.style.transform = "perspective(500px) rotateX(0) rotateY(0) scale(1)";
   }
+
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
@@ -85,7 +95,10 @@ export default function Index() {
         }}
       />
 
+      <div className="scroll-progress" aria-hidden="true" />
+
       <CommandPalette />
+
 
 
 
@@ -118,7 +131,24 @@ export default function Index() {
 
       <main id="top" className="mx-auto max-w-5xl px-6">
         {/* Hero */}
-        <section className="flex flex-col items-center pt-20 pb-24 text-center md:pt-28 md:pb-32">
+        <section
+          ref={heroRef as React.RefObject<HTMLElement>}
+          onMouseMove={handleHeroMove}
+          className="flex flex-col items-center pt-20 pb-24 text-center md:pt-28 md:pb-32"
+          style={{ position: "relative", overflow: "hidden" }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              background:
+                "radial-gradient(300px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(248,249,250,0.08), transparent 70%)",
+              transition: "background 0.1s ease",
+            }}
+          />
+
           <div
             className="overflow-hidden rounded-full"
             style={{
@@ -167,12 +197,37 @@ export default function Index() {
                   target={url.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
                   aria-label={label}
-                  className="block opacity-60 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
+                  className="pv-social-link block opacity-60 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
+                  style={{ position: "relative" }}
                 >
                   <Icon className="h-5 w-5" />
+                  <span
+                    aria-hidden="true"
+                    className="pv-social-tooltip"
+                    style={{
+                      position: "absolute",
+                      bottom: "calc(100% + 6px)",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      fontSize: 11,
+                      fontFamily: "Inter, sans-serif",
+                      color: "#F8F9FA",
+                      background: "#403f3c",
+                      border: "0.5px solid rgba(248,249,250,0.16)",
+                      padding: "3px 8px",
+                      borderRadius: 6,
+                      whiteSpace: "nowrap",
+                      opacity: 0,
+                      pointerEvents: "none",
+                      transition: "opacity 0.15s ease",
+                    }}
+                  >
+                    {label}
+                  </span>
                 </a>
               </li>
             ))}
+
           </ul>
         </section>
 
