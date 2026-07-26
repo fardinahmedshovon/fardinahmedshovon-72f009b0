@@ -187,11 +187,12 @@ export default function Index() {
               About
             </p>
             <h2
-              className="mt-4 text-3xl md:text-4xl"
+              className="mt-4 text-3xl md:text-4xl text-balance"
               style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
             >
               A founder building quietly, shipping deliberately.
             </h2>
+
             <div
               className="mt-8 space-y-5 text-[15px] leading-relaxed md:text-base"
               style={{ color: MUTED }}
