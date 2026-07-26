@@ -197,12 +197,37 @@ export default function Index() {
                   target={url.startsWith("http") ? "_blank" : undefined}
                   rel="noreferrer noopener"
                   aria-label={label}
-                  className="block opacity-60 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
+                  className="pv-social-link block opacity-60 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
+                  style={{ position: "relative" }}
                 >
                   <Icon className="h-5 w-5" />
+                  <span
+                    aria-hidden="true"
+                    className="pv-social-tooltip"
+                    style={{
+                      position: "absolute",
+                      bottom: "calc(100% + 6px)",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      fontSize: 11,
+                      fontFamily: "Inter, sans-serif",
+                      color: "#F8F9FA",
+                      background: "#403f3c",
+                      border: "0.5px solid rgba(248,249,250,0.16)",
+                      padding: "3px 8px",
+                      borderRadius: 6,
+                      whiteSpace: "nowrap",
+                      opacity: 0,
+                      pointerEvents: "none",
+                      transition: "opacity 0.15s ease",
+                    }}
+                  >
+                    {label}
+                  </span>
                 </a>
               </li>
             ))}
+
           </ul>
         </section>
 
