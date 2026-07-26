@@ -34,6 +34,25 @@ const SOCIALS = [
 ];
 
 export default function Index() {
+  const cardRef = useRef<HTMLAnchorElement | null>(null);
+
+  function handleCardMove(e: React.MouseEvent) {
+    const el = cardRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    const rx = ((y / r.height) - 0.5) * -12;
+    const ry = ((x / r.width) - 0.5) * 12;
+    el.style.transform = `perspective(500px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(1.02)`;
+  }
+
+  function handleCardLeave() {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transform = "perspective(500px) rotateX(0) rotateY(0) scale(1)";
+  }
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
     return () => {
@@ -44,12 +63,31 @@ export default function Index() {
   return (
     <div
       style={{
+        position: "relative",
         backgroundColor: BG,
         color: FG,
         fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
       }}
       className="min-h-screen antialiased"
     >
+      {/* Grain overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "fixed",
+          inset: 0,
+          backgroundImage: GRAIN_SVG,
+          backgroundRepeat: "repeat",
+          opacity: 0.06,
+          mixBlendMode: "overlay",
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
+
+      <CommandPalette />
+
+
 
 
 
