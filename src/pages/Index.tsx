@@ -95,7 +95,10 @@ export default function Index() {
         }}
       />
 
+      <div className="scroll-progress" aria-hidden="true" />
+
       <CommandPalette />
+
 
 
 
