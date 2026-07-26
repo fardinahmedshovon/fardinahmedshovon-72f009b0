@@ -250,15 +250,20 @@ export default function Index() {
             {VENTURES.map((v) => (
               <a
                 key={v.title}
+                ref={cardRef}
+                onMouseMove={handleCardMove}
+                onMouseLeave={handleCardLeave}
                 href={v.url}
                 target={v.url.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer noopener"
-                className="group flex flex-col rounded-2xl p-7 transition-all duration-300 hover:-translate-y-0.5"
+                className="group flex flex-col rounded-2xl p-7 hover:-translate-y-0.5"
                 style={{
                   border: `1px solid ${BORDER}`,
                   backgroundColor: "rgba(248,249,250,0.02)",
+                  transition: "border-color 0.2s, transform 0.15s ease",
                 }}
               >
+
                 <div className="flex items-start justify-between">
                   <span
                     className="text-[11px] uppercase tracking-[0.22em]"
