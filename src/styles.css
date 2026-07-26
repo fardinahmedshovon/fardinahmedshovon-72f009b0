@@ -148,3 +148,55 @@
   color: #403f3c;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #F8F9FA;
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 60;
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: scroll-progress-fill linear;
+    animation-timeline: scroll(root);
+  }
+}
+
+@keyframes scroll-progress-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+:focus-visible {
+  outline: 2px solid #F8F9FA;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.pv-social-link:hover .pv-social-tooltip,
+.pv-social-link:focus-visible .pv-social-tooltip {
+  opacity: 1;
+}
+
+@media print {
+  * {
+    background: #ffffff !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+  }
+  a {
+    color: #111111 !important;
+    text-decoration: underline;
+  }
+  .scroll-progress,
+  [aria-label="Open quick actions"] {
+    display: none !important;
+  }
+}
+
