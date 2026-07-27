@@ -55,23 +55,20 @@ export default function CommandPalette() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Open quick actions"
+        className="fixed z-40 bottom-4 right-4 md:bottom-6 md:right-6 lg:bottom-8 lg:right-8 text-[11px] md:text-xs lg:text-[13px] px-2.5 py-1.5 md:px-3 md:py-2 lg:px-3.5 lg:py-2 rounded-md md:rounded-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
         style={{
-          position: "fixed",
-          bottom: 20,
-          right: 20,
-          zIndex: 40,
-          background: "#403f3c",
+          background: "rgba(64,63,60,0.85)",
           color: "#F8F9FA",
-          border: "0.5px solid rgba(248,249,250,0.16)",
-          borderRadius: 8,
-          padding: "8px 12px",
+          border: "0.5px solid rgba(248,249,250,0.18)",
           fontFamily: "Inter, sans-serif",
-          fontSize: 13,
           cursor: "pointer",
+          boxShadow: "0 6px 16px -6px rgba(0,0,0,0.4)",
         }}
       >
-        ⌘K
+        <span className="hidden md:inline">⌘K</span>
+        <span className="md:hidden">Menu</span>
       </button>
+
 
       <div
         role="dialog"
