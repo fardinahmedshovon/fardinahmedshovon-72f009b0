@@ -23,6 +23,7 @@ const VENTURES = [
     description: "Simplifying how people discover and access apps and games.",
     url: "https://apkbongo.com",
     tag: "Founder · Active",
+    year: "2020",
   },
 ];
 
@@ -337,6 +338,12 @@ export default function Index() {
                 <p className="mt-3 text-sm leading-relaxed" style={{ color: MUTED }}>
                   {v.description}
                 </p>
+                <span
+                  className="mt-6 text-[11px] uppercase tracking-[0.22em]"
+                  style={{ color: MUTED }}
+                >
+                  Est. {v.year}
+                </span>
               </a>
             ))}
           </div>
