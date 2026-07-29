@@ -359,7 +359,7 @@ export default function Index() {
             Contact
           </p>
           <h2
-            className="mx-auto mt-4 max-w-2xl text-3xl md:text-5xl"
+            className="mx-auto mt-4 max-w-2xl text-3xl md:text-4xl lg:text-5xl text-balance"
             style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
           >
             Have an idea worth building?
