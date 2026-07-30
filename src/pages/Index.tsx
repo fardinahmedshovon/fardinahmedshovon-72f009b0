@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import CommandPalette from "@/components/CommandPalette";
+import KineticName from "@/components/KineticName";
 
 const GRAIN_SVG =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")";
@@ -37,6 +38,13 @@ const SOCIALS = [
 export default function Index() {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
+  const [heroIn, setHeroIn] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroIn(true), 50);
+    return () => clearTimeout(t);
+  }, []);
+
 
   function handleHeroMove(e: React.MouseEvent) {
     const el = heroRef.current;
@@ -168,25 +176,33 @@ export default function Index() {
             />
           </div>
 
-          <h1
-            className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-[2.75rem] lg:text-6xl text-balance"
-            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
-          >
-            Fardin Ahmed Shovon
-          </h1>
+          <KineticName />
 
           <p
             className="mt-5 text-xs uppercase tracking-[0.32em]"
-            style={{ color: MUTED, fontFamily: "Inter, sans-serif" }}
+            style={{
+              color: MUTED,
+              fontFamily: "Inter, sans-serif",
+              opacity: heroIn ? 1 : 0,
+              transform: heroIn ? "translateY(0)" : "translateY(12px)",
+              transition: "opacity 0.5s ease 620ms, transform 0.5s ease 620ms",
+            }}
           >
             Entrepreneur
           </p>
           <p
             className="mt-3 max-w-md text-base md:text-lg text-balance"
-            style={{ color: FG, fontFamily: "Inter, sans-serif" }}
+            style={{
+              color: FG,
+              fontFamily: "Inter, sans-serif",
+              opacity: heroIn ? 1 : 0,
+              transform: heroIn ? "translateY(0)" : "translateY(12px)",
+              transition: "opacity 0.5s ease 760ms, transform 0.5s ease 760ms",
+            }}
           >
             Turning visions into ventures.
           </p>
+
 
 
           {/* Socials */}
