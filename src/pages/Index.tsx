@@ -238,19 +238,19 @@ export default function Index() {
           className="border-t py-20 md:py-28"
           style={{ borderColor: BORDER }}
         >
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-xl text-center md:max-w-lg lg:max-w-2xl">
             <p className="text-xs uppercase tracking-[0.32em]" style={{ color: MUTED }}>
               About
             </p>
             <h2
-              className="mt-4 text-3xl md:text-4xl text-balance"
+              className="mt-4 text-3xl md:text-[1.75rem] lg:text-4xl text-balance"
               style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
             >
               A founder building quietly, shipping deliberately.
             </h2>
 
             <div
-              className="mt-8 space-y-5 text-[15px] leading-relaxed md:text-base"
+              className="mt-8 space-y-5 text-[15px] leading-relaxed md:text-[14.5px] lg:text-base"
               style={{ color: MUTED }}
             >
               <p>
