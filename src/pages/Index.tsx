@@ -38,6 +38,13 @@ const SOCIALS = [
 export default function Index() {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
+  const [heroIn, setHeroIn] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroIn(true), 50);
+    return () => clearTimeout(t);
+  }, []);
+
 
   function handleHeroMove(e: React.MouseEvent) {
     const el = heroRef.current;
