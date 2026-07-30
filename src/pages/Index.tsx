@@ -302,7 +302,7 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="mx-auto grid max-w-2xl gap-5">
+          <div className="mx-auto grid max-w-xl gap-5 md:max-w-md lg:max-w-2xl">
             {VENTURES.map((v) => (
               <a
                 key={v.title}
@@ -312,7 +312,7 @@ export default function Index() {
                 href={v.url}
                 target={v.url.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer noopener"
-                className="group flex flex-col rounded-2xl p-7 hover:-translate-y-0.5"
+                className="group flex flex-col rounded-2xl p-6 lg:p-7 hover:-translate-y-0.5"
                 style={{
                   border: `1px solid ${BORDER}`,
                   backgroundColor: "rgba(248,249,250,0.02)",
@@ -330,7 +330,7 @@ export default function Index() {
                   <ArrowUpRight className="h-4 w-4 opacity-50 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
                 </div>
                 <h3
-                  className="mt-8 text-2xl"
+                  className="mt-6 text-xl lg:mt-8 lg:text-2xl"
                   style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
                 >
                   {v.title}
@@ -339,7 +339,7 @@ export default function Index() {
                   {v.description}
                 </p>
                 <span
-                  className="mt-6 text-[11px] uppercase tracking-[0.22em]"
+                  className="mt-5 text-[11px] uppercase tracking-[0.22em] lg:mt-6"
                   style={{ color: MUTED }}
                 >
                   Est. {v.year}
