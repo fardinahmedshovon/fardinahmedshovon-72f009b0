@@ -176,25 +176,33 @@ export default function Index() {
             />
           </div>
 
-          <h1
-            className="mt-10 text-4xl leading-[1.05] tracking-tight md:text-[2.75rem] lg:text-6xl text-balance"
-            style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, color: FG }}
-          >
-            Fardin Ahmed Shovon
-          </h1>
+          <KineticName />
 
           <p
             className="mt-5 text-xs uppercase tracking-[0.32em]"
-            style={{ color: MUTED, fontFamily: "Inter, sans-serif" }}
+            style={{
+              color: MUTED,
+              fontFamily: "Inter, sans-serif",
+              opacity: heroIn ? 1 : 0,
+              transform: heroIn ? "translateY(0)" : "translateY(12px)",
+              transition: "opacity 0.5s ease 620ms, transform 0.5s ease 620ms",
+            }}
           >
             Entrepreneur
           </p>
           <p
             className="mt-3 max-w-md text-base md:text-lg text-balance"
-            style={{ color: FG, fontFamily: "Inter, sans-serif" }}
+            style={{
+              color: FG,
+              fontFamily: "Inter, sans-serif",
+              opacity: heroIn ? 1 : 0,
+              transform: heroIn ? "translateY(0)" : "translateY(12px)",
+              transition: "opacity 0.5s ease 760ms, transform 0.5s ease 760ms",
+            }}
           >
             Turning visions into ventures.
           </p>
+
 
 
           {/* Socials */}
