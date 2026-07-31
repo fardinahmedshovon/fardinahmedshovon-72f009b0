@@ -211,31 +211,19 @@ export default function Index() {
             />
           </div>
 
-          <KineticName />
+          <KineticName onReveal={() => setHeroIn(true)} />
 
           <p
             className="mt-5 text-xs uppercase tracking-[0.32em]"
-            style={{
-              color: MUTED,
-              fontFamily: "Inter, sans-serif",
-              opacity: heroIn ? 1 : 0,
-              transform: heroIn ? "translateY(0)" : "translateY(12px)",
-              transition: "opacity 0.5s ease 620ms, transform 0.5s ease 620ms",
-            }}
+            style={{ color: MUTED, fontFamily: "Inter, sans-serif" }}
           >
-            Entrepreneur
+            <StaggerText text="Entrepreneur" active={heroIn} baseDelay={620} step={22} />
           </p>
           <p
             className="mt-3 max-w-md text-base md:text-lg text-balance"
-            style={{
-              color: FG,
-              fontFamily: "Inter, sans-serif",
-              opacity: heroIn ? 1 : 0,
-              transform: heroIn ? "translateY(0)" : "translateY(12px)",
-              transition: "opacity 0.5s ease 760ms, transform 0.5s ease 760ms",
-            }}
+            style={{ color: FG, fontFamily: "Inter, sans-serif" }}
           >
-            Turning visions into ventures.
+            <StaggerText text="Turning visions into ventures." active={heroIn} baseDelay={840} step={12} />
           </p>
 
 
