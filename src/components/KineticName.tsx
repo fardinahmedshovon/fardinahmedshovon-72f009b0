@@ -14,12 +14,14 @@ export default function KineticName({ onReveal }: { onReveal?: () => void }) {
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
       setRevealed(true);
+      onRevealRef.current?.();
       return;
     }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           setRevealed(true);
+          onRevealRef.current?.();
           observer.disconnect();
         }
       },
