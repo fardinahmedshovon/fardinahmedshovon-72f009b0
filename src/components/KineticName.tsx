@@ -8,8 +8,23 @@ export default function KineticName() {
   const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
-    const id = requestAnimationFrame(() => setRevealed(true));
-    return () => cancelAnimationFrame(id);
+    const el = containerRef.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setRevealed(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   function handleMove(e: React.MouseEvent) {
