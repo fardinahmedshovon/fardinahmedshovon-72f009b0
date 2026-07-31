@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import CommandPalette from "@/components/CommandPalette";
 import KineticName from "@/components/KineticName";
-import { scrollToId } from "@/lib/scrollTo";
-
 
 const GRAIN_SVG =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")";
@@ -164,16 +162,11 @@ export default function Index() {
               <li key={n.id}>
                 <a
                   href={`#${n.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToId(n.id);
-                  }}
                   className="transition-colors duration-300 hover:text-[color:var(--fg)]"
                   style={{ ["--fg" as never]: FG }}
                 >
                   {n.label}
                 </a>
-
               </li>
             ))}
           </ul>
@@ -233,35 +226,6 @@ export default function Index() {
             <StaggerText text="Turning visions into ventures." active={heroIn} baseDelay={840} step={12} />
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#ventures"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToId("ventures");
-              }}
-              className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-              style={{ backgroundColor: FG, color: BG, fontFamily: "Inter, sans-serif" }}
-            >
-              View ventures
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToId("contact");
-              }}
-              className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
-              style={{
-                border: `1px solid ${BORDER}`,
-                color: FG,
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              Get in touch
-            </a>
-          </div>
 
 
           {/* Socials */}
