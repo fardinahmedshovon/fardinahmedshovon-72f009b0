@@ -162,11 +162,16 @@ export default function Index() {
               <li key={n.id}>
                 <a
                   href={`#${n.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToId(n.id);
+                  }}
                   className="transition-colors duration-300 hover:text-[color:var(--fg)]"
                   style={{ ["--fg" as never]: FG }}
                 >
                   {n.label}
                 </a>
+
               </li>
             ))}
           </ul>
