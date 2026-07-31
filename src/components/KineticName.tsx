@@ -2,22 +2,26 @@ import { useEffect, useRef, useState } from "react";
 
 const NAME_TEXT = "Fardin Ahmed Shovon";
 
-export default function KineticName() {
+export default function KineticName({ onReveal }: { onReveal?: () => void }) {
   const containerRef = useRef<HTMLHeadingElement | null>(null);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [revealed, setRevealed] = useState(false);
+  const onRevealRef = useRef(onReveal);
+  onRevealRef.current = onReveal;
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
       setRevealed(true);
+      onRevealRef.current?.();
       return;
     }
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           setRevealed(true);
+          onRevealRef.current?.();
           observer.disconnect();
         }
       },
