@@ -21,7 +21,7 @@ export default function KineticName() {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.5, rootMargin: "0px 0px -12% 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
