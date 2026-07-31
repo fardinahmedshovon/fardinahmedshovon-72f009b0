@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { scrollToId } from "@/lib/scrollTo";
 
 type Action = {
   label: string;
@@ -10,21 +11,19 @@ const ACTIONS: Action[] = [
   {
     label: "About",
     hint: "G A",
-    action: () =>
-      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }),
+    action: () => scrollToId("about"),
   },
   {
     label: "Ventures",
     hint: "G V",
-    action: () =>
-      document.getElementById("ventures")?.scrollIntoView({ behavior: "smooth" }),
+    action: () => scrollToId("ventures"),
   },
   {
     label: "Contact",
     hint: "G C",
-    action: () =>
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }),
+    action: () => scrollToId("contact"),
   },
+
   {
     label: "Email me",
     hint: "\u21B5",
