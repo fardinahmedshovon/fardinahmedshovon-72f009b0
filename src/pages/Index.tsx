@@ -35,15 +35,50 @@ const SOCIALS = [
   { icon: Mail, url: "mailto:contact@shovon.iam.bd", label: "Email" },
 ];
 
+function StaggerText({
+  text,
+  active,
+  baseDelay,
+  step = 18,
+}: {
+  text: string;
+  active: boolean;
+  baseDelay: number;
+  step?: number;
+}) {
+  let i = 0;
+  return (
+    <>
+      {text.split(" ").map((word, wi, arr) => (
+        <span key={wi} className="inline-block whitespace-nowrap">
+          {word.split("").map((ch, ci) => {
+            const idx = i++;
+            return (
+              <span
+                key={ci}
+                className="inline-block"
+                style={{
+                  opacity: active ? 1 : 0,
+                  transform: active ? "translateY(0)" : "translateY(10px)",
+                  transition: `opacity 0.4s ease ${baseDelay + idx * step}ms, transform 0.4s ease ${baseDelay + idx * step}ms`,
+                }}
+              >
+                {ch}
+              </span>
+            );
+          })}
+          {wi < arr.length - 1 ? "\u00A0" : null}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function Index() {
   const cardRef = useRef<HTMLAnchorElement | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
   const [heroIn, setHeroIn] = useState(false);
 
-  useEffect(() => {
-    const t = setTimeout(() => setHeroIn(true), 50);
-    return () => clearTimeout(t);
-  }, []);
 
 
   function handleHeroMove(e: React.MouseEvent) {
