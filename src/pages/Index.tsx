@@ -233,6 +233,35 @@ export default function Index() {
             <StaggerText text="Turning visions into ventures." active={heroIn} baseDelay={840} step={12} />
           </p>
 
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#ventures"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("ventures");
+              }}
+              className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              style={{ backgroundColor: FG, color: BG, fontFamily: "Inter, sans-serif" }}
+            >
+              View ventures
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("contact");
+              }}
+              className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                border: `1px solid ${BORDER}`,
+                color: FG,
+                fontFamily: "Inter, sans-serif",
+              }}
+            >
+              Get in touch
+            </a>
+          </div>
 
 
           {/* Socials */}
