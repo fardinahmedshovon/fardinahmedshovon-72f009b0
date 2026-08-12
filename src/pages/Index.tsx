@@ -407,16 +407,9 @@ export default function Index() {
             I’m always open to thoughtful conversations about new ventures, collaborations,
             or just a good cup of coffee.
           </p>
-          <a
-            href="mailto:contact@shovon.iam.bd"
-            className="mt-10 inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ backgroundColor: FG, color: BG }}
-          >
-            Get in touch
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
         </section>
       </main>
+
 
       <footer
         className="border-t py-10 text-center"
