@@ -1,36 +1,22 @@
-## Changes
+Reduce hero top spacing so social links are visible above the fold on desktop
 
-**1. Add launch year to the ApkBongo card**
+## Current state
+- The hero section has `pt-20 pb-24 md:pt-28 md:pb-32` (top padding 7rem/112px on desktop).
+- The sticky header sits above the hero with its own `py-4` padding.
+- Combined top whitespace pushes the photo and social links below the first-viewport fold on many desktop screens.
 
-Add `year: "2020"` to the venture data in `src/pages/Index.tsx`, then render it as a small muted line at the bottom of the card, styled like the existing `tag` (uppercase, tracked, muted color) so it reads as a subtle credential rather than a stat.
+## What we will change
+- Tighten the hero section’s top padding on desktop and tablet breakpoints so the profile photo, tag/tagline, and social links are visible on first load.
+- Keep mobile spacing generous enough to still feel airy.
+- Preserve the existing cursor spotlight, kinetic name, and stagger animations.
 
-Card layout after change:
-```text
-FOUNDER · ACTIVE                 ↗
+## Proposed values
+- Mobile: keep `pt-20` (80px) as-is.
+- Tablet (`md:`): reduce from `md:pt-28` to `md:pt-16` or `md:pt-20` (64–80px).
+- Desktop (`lg:`): add `lg:pt-14` (56px) so the social links sit clearly above the fold on 1024px+ screens.
+- Bottom padding stays `md:pb-32 lg:pb-32` to maintain the section’s vertical rhythm.
 
-ApkBongo
-Simplifying how people discover…
-
-EST. 2020
-```
-
-**2. Add Vercel Analytics**
-
-Since the site is deployed on Vercel, use `@vercel/analytics` — one-click, privacy-friendly, no cookie banner, free tier covers small sites.
-
-Steps:
-- `npm install @vercel/analytics`
-- In `src/App.tsx`, import `{ Analytics } from "@vercel/analytics/react"` and render `<Analytics />` once at the app root.
-- No config, no keys. Vercel auto-detects it and starts collecting pageviews after the next deploy.
-- Enable it in the Vercel dashboard → Project → Analytics tab (free tier, one click) after redeploying.
-
-What you'll see: pageviews, top pages, referrers (Twitter, LinkedIn, Google, direct), countries, devices. No personal data, no cookies.
-
-## Not doing (unless you say otherwise)
-
-- No changes to prerender script — the Analytics component mounts client-side and doesn't need to be in the static HTML.
-- Skipping Plausible/GA — Vercel Analytics is simpler since you're already on Vercel.
-
-## After the changes
-
-Build locally to confirm no errors, then you'll need to redeploy to Vercel and flip on Analytics in the Vercel dashboard for data to start flowing.
+## Verification
+- Preview the site in desktop, tablet, and mobile views.
+- Confirm the profile photo, tagline, and all four social icons appear without scrolling on desktop.
+- Confirm no other sections break or overlap.
