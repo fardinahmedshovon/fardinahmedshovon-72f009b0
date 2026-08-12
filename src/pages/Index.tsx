@@ -12,11 +12,8 @@ const FG = "#F8F9FA";
 const MUTED = "#bdbab3";
 const BORDER = "rgba(248,249,250,0.14)";
 
-const NAV = [
-  { id: "about", label: "About" },
-  { id: "ventures", label: "Ventures" },
-  { id: "contact", label: "Contact" },
-];
+const NAV = [{ id: "about", label: "About" }];
+
 
 const VENTURES = [
   {
