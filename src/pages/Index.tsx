@@ -178,7 +178,7 @@ export default function Index() {
         <section
           ref={heroRef as React.RefObject<HTMLElement>}
           onMouseMove={handleHeroMove}
-          className="flex flex-col items-center pt-20 pb-24 text-center md:pt-28 md:pb-32"
+          className="flex flex-col items-center pt-20 pb-24 text-center md:pt-16 md:pb-32 lg:pt-14"
           style={{ position: "relative", overflow: "hidden" }}
         >
           <div

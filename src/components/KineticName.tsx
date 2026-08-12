@@ -25,7 +25,7 @@ export default function KineticName({ onReveal }: { onReveal?: () => void }) {
           observer.disconnect();
         }
       },
-      { threshold: 0, rootMargin: "-50% 0px -50% 0px" },
+      { threshold: 0, rootMargin: "-49% 0px -49% 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
