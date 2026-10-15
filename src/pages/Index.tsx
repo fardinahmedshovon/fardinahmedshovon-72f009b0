@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import CommandPalette from "@/components/CommandPalette";
 import KineticName from "@/components/KineticName";
+import Signature from "@/components/Signature";
 
 const GRAIN_SVG =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")";
@@ -320,6 +321,7 @@ export default function Index() {
                 loop is what I care about most right now.
               </p>
             </div>
+            <Signature className="mt-10" width={200} label="Founder, ApkBongo" />
           </div>
         </section>
 
@@ -425,6 +427,7 @@ export default function Index() {
         className="border-t py-10 text-center"
         style={{ borderColor: BORDER }}
       >
+        <Signature className="mb-6" width={150} />
         <p className="text-sm" style={{ color: FG }}>
           © 2026 Fardin Ahmed Shovon
         </p>
