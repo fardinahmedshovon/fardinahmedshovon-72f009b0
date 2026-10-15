@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Linkedin, Mail, ArrowUpRight } from "lucide-react";
-import CommandPalette from "@/components/CommandPalette";
+import ContactActions from "@/components/ContactActions";
 import KineticName from "@/components/KineticName";
 import Signature from "@/components/Signature";
 
@@ -142,7 +142,6 @@ export default function Index() {
 
       <div className="scroll-progress" aria-hidden="true" />
 
-      <CommandPalette />
 
 
 
@@ -420,6 +419,7 @@ export default function Index() {
             Get in touch
             <ArrowUpRight className="h-4 w-4" />
           </a>
+          <ContactActions />
         </section>
       </main>
 

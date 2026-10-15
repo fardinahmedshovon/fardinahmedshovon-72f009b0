@@ -62,6 +62,11 @@
 }
 
 :root {
+  --portfolio-surface: #403f3c;
+  --portfolio-text: #F8F9FA;
+  --portfolio-muted: #bdbab3;
+  --portfolio-border: rgba(248, 249, 250, 0.14);
+  --portfolio-hover: rgba(248, 249, 250, 0.06);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -195,9 +200,32 @@
     text-decoration: underline;
   }
   .scroll-progress,
-  [aria-label="Open quick actions"] {
+  .pv-contact-actions,
+  [data-sonner-toaster] {
     display: none !important;
   }
+}
+
+.pv-contact-action {
+  color: var(--portfolio-muted);
+  letter-spacing: 0;
+}
+.pv-contact-action:hover {
+  background: var(--portfolio-hover);
+  color: var(--portfolio-text);
+}
+.pv-contact-action:focus-visible {
+  outline: 2px solid var(--portfolio-text);
+  outline-offset: 2px;
+}
+[data-sonner-toast].pv-contact-toast {
+  background: var(--portfolio-surface);
+  color: var(--portfolio-text);
+  border-color: var(--portfolio-border);
+  font-family: Inter, sans-serif;
+}
+[data-sonner-toast].pv-contact-toast [data-description] {
+  color: var(--portfolio-muted);
 }
 
 
