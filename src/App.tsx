@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "sonner";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -11,6 +12,7 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Analytics />
+      <Toaster position="bottom-center" toastOptions={{ className: "pv-contact-toast" }} />
     </>
   );
 }
