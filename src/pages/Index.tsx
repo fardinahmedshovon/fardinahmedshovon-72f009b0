@@ -427,7 +427,6 @@ export default function Index() {
         className="border-t py-10 text-center"
         style={{ borderColor: BORDER }}
       >
-        <Signature className="mb-6" width={150} />
         <p className="text-sm" style={{ color: FG }}>
           © 2026 Fardin Ahmed Shovon
         </p>
