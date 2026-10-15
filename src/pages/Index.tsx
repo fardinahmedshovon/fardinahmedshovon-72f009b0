@@ -229,7 +229,7 @@ export default function Index() {
 
 
           {/* Socials */}
-          <ul className="mt-10 flex items-center gap-6">
+          <ul className="mt-8 flex items-center gap-5 px-2 md:mt-10 md:gap-6 lg:mt-10 lg:gap-8 lg:px-0">
             {SOCIALS.map(({ icon: Icon, url, label }) => (
               <li key={label}>
                 <a
