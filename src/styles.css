@@ -209,3 +209,24 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Signature draw-in */
+.pv-signature {
+  fill: rgba(248, 249, 250, 0);
+  stroke: rgba(248, 249, 250, 0.85);
+  stroke-width: 0.8;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+.pv-signature.is-drawn {
+  animation: pv-sign-stroke 2.4s ease forwards, pv-sign-fill 0.8s ease 1.9s forwards;
+}
+.pv-signature-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.pv-signature-line.is-drawn { animation: pv-sign-line 0.7s ease 2.2s forwards; }
+@keyframes pv-sign-stroke { to { stroke-dashoffset: 0; } }
+@keyframes pv-sign-fill { to { fill: rgba(248, 249, 250, 0.85); } }
+@keyframes pv-sign-line { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .pv-signature { fill: rgba(248, 249, 250, 0.85); stroke-dashoffset: 0; }
+  .pv-signature-line { stroke-dashoffset: 0; }
+}
