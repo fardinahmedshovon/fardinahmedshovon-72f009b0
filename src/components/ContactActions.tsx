@@ -2,12 +2,14 @@ import { useState } from "react";
 import { ArrowUpRight, Check, Copy, UserRoundPlus } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import ContactForm from "@/components/ContactForm";
 
 const EMAIL = "contact@shovon.iam.bd";
 
 export default function ContactActions() {
   const [copied, setCopied] = useState(false);
   const [copying, setCopying] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
   async function copyEmail() {
     setCopying(true);
@@ -24,12 +26,12 @@ export default function ContactActions() {
   }
 
   return (
+    <>
+    <ContactForm open={formOpen} onOpenChange={setFormOpen} />
     <div className="pv-contact-bar mt-10 inline-flex items-center gap-1 rounded-full p-1.5">
-      <Button asChild className="pv-contact-primary h-10 rounded-full px-5 sm:px-6">
-        <a href={`mailto:${EMAIL}`}>
-          Get in touch
-          <ArrowUpRight aria-hidden="true" />
-        </a>
+      <Button className="pv-contact-primary h-10 rounded-full px-5 sm:px-6" onClick={() => setFormOpen(true)}>
+        Get in touch
+        <ArrowUpRight aria-hidden="true" />
       </Button>
       <span aria-hidden="true" className="pv-contact-divider" />
       <Button
@@ -56,5 +58,6 @@ export default function ContactActions() {
         </a>
       </Button>
     </div>
+    </>
   );
 }
