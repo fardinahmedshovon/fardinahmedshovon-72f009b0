@@ -245,6 +245,23 @@
 [data-sonner-toast].pv-contact-toast [data-description] {
   color: var(--portfolio-muted);
 }
+.pv-form-dialog {
+  background: var(--portfolio-bg, #403f3c);
+  color: var(--portfolio-text);
+  border: 1px solid var(--portfolio-border);
+  font-family: Inter, sans-serif;
+}
+.pv-form-dialog > button { color: var(--portfolio-muted); }
+.pv-form-muted, .pv-form-label { color: var(--portfolio-muted); }
+.pv-form-field {
+  background: rgba(248, 249, 250, 0.04);
+  border: 1px solid rgba(248, 249, 250, 0.14);
+  color: var(--portfolio-text);
+  transition: border-color 0.2s ease;
+}
+.pv-form-field:focus { border-color: var(--portfolio-text); }
+.pv-form-field[aria-invalid="true"] { border-color: #e8a49c; }
+.pv-form-error { color: #e8a49c; }
 
 
 @media (prefers-reduced-motion: reduce) {
