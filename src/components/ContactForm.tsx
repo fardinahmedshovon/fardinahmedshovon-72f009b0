@@ -13,7 +13,7 @@ import {
 
 const EMAIL = "contact@shovon.iam.bd";
 // Public Web3Forms access key (safe to ship). Empty = fallback to a prefilled email draft.
-const WEB3FORMS_KEY = "";
+const WEB3FORMS_KEY = "9feb3c3e-39e4-4102-8f76-63332b60efdb";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please add your name").max(100),
