@@ -162,12 +162,13 @@ export default function ContactForm({
           </div>
           {WEB3FORMS_KEY && (
             <div>
-              <div className="overflow-hidden">
+              <div className="min-h-[78px] overflow-hidden">
                 <HCaptcha
                   ref={captchaRef}
                   sitekey={HCAPTCHA_SITEKEY}
                   theme="dark"
                   reCaptchaCompat={false}
+                  sentry={false}
                   onVerify={(t) => { setToken(t); setCaptchaError(""); }}
                   onExpire={() => setToken("")}
                 />

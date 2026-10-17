@@ -293,3 +293,18 @@
   .pv-signature { fill: rgba(248, 249, 250, 0.85); stroke-dashoffset: 0; }
   .pv-signature-line { stroke-dashoffset: 0; }
 }
+
+/* Smooth contact dialog */
+.pv-form-dialog { will-change: transform, opacity; }
+.pv-form-dialog[data-state="open"] { animation: pv-dialog-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.pv-form-dialog[data-state="closed"] { animation: pv-dialog-out 0.18s ease-in both; }
+[data-slot="dialog-overlay"][data-state="open"], .fixed.inset-0[data-state="open"] { animation: pv-fade-in 0.25s ease both; }
+@keyframes pv-dialog-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pv-dialog-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(8px) scale(0.98); }
+}
+@keyframes pv-fade-in { from { opacity: 0; } to { opacity: 1; } }
